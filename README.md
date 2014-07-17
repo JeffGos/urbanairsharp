@@ -1,7 +1,8 @@
 urbanairsharp
 =============
 
-A C# .Net wrapper library to simplify server-side calls to the Urban Airship API
+A C# .Net library to simplify server-side calls to the Urban Airship API Version 3
+http://docs.urbanairship.com/reference/api/v3/
 
 # Getting Started
 
@@ -49,3 +50,7 @@ This is an example of a more complicated, audience targeted Push
 
 	client.Push("English speaking New Zealand Rugby fans", null, null, null, customAudience);
 
+# Licence
+Copyright (c) 2014-2015 Jeff Gosling Licensed under the MIT license.
+
+http://opensource.org/licenses/mit-license.php
