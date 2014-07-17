@@ -2,6 +2,7 @@
 using System;
 using System.Net.Http;
 using UrbanAirSharp.Dto;
+using UrbanAirSharp.Request.Base;
 
 namespace UrbanAirSharp.Request
 {
@@ -10,19 +11,13 @@ namespace UrbanAirSharp.Request
 	/// 
 	/// http://docs.urbanairship.com/reference/api/v3/schedule.html#schedule-a-notification
 	/// </summary>
-	public class ScheduleEditRequest : BaseRequest
+	public class ScheduleEditRequest : PostRequest<Schedule>
 	{
-		public Schedule Content { get; set; }
-		
-		public ScheduleEditRequest(Guid scheduleId)
+		public ScheduleEditRequest(Guid scheduleId, Schedule schedule) 
+			: base (schedule)
 		{
 			RequestUrl = "api/schedules/" + scheduleId;
 			RequestMethod = HttpMethod.Post;
-		}
-
-		public override object GetContent()
-		{
-			return Content;
 		}
 	}
 }

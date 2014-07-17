@@ -1,6 +1,10 @@
 ﻿// Copyright (c) 2014-2015 Jeff Gosling (jeffery.gosling@gmail.com)
+
+using System;
 using System.Net.Http;
 using UrbanAirSharp.Dto;
+using UrbanAirSharp.Request.Base;
+using UrbanAirSharp.Response;
 
 namespace UrbanAirSharp.Request
 {
@@ -18,19 +22,12 @@ namespace UrbanAirSharp.Request
 	/// 
 	/// http://docs.urbanairship.com/reference/api/v3/push.html
 	/// </summary>
-	public class PushRequest : BaseRequest
+	public class PushRequest : PostRequest<Push>
 	{
-		public Push Content { get; set; }
-
-		public PushRequest()
+		public PushRequest(Push push)
+			: base(push)
 		{
 			RequestUrl = "api/push/";
-			RequestMethod = HttpMethod.Post;
-		}
-
-		public override object GetContent()
-		{
-			return Content;
 		}
 	}
 }

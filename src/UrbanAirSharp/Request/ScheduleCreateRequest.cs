@@ -1,6 +1,9 @@
 ﻿// Copyright (c) 2014-2015 Jeff Gosling (jeffery.gosling@gmail.com)
+
+using System;
 using System.Net.Http;
 using UrbanAirSharp.Dto;
+using UrbanAirSharp.Request.Base;
 
 namespace UrbanAirSharp.Request
 {
@@ -9,19 +12,12 @@ namespace UrbanAirSharp.Request
 	/// 
 	/// http://docs.urbanairship.com/reference/api/v3/schedule.html#schedule-a-notification
 	/// </summary>
-	public class ScheduleCreateRequest : BaseRequest
+	public class ScheduleCreateRequest : PostRequest<Schedule>
 	{
-		public Schedule Content { get; set; }
-
-		public ScheduleCreateRequest()
+		public ScheduleCreateRequest(Schedule schedule)
+			: base(schedule)
 		{
 			RequestUrl = "api/schedules/";
-			RequestMethod = HttpMethod.Post;
-		}
-
-		public override object GetContent()
-		{
-			return Content;
 		}
 	}
 }

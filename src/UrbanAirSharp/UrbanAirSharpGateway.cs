@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2014-2015 Jeff Gosling (jeffery.gosling@gmail.com)
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -12,6 +13,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using UrbanAirSharp.Dto;
 using UrbanAirSharp.Request;
+using UrbanAirSharp.Request.Base;
 using UrbanAirSharp.Response;
 using UrbanAirSharp.Type;
 
@@ -39,27 +41,12 @@ namespace UrbanAirSharp
 
 	public class UrbanAirSharpGateway
 	{
-		private const String UrbanAirShipBaseUrl = "https://go.urbanairship.com/";
-
-		private String _appKey;
-		private String _appMasterSecret;
-		private readonly HttpClient _httpClient;
-
 		private static readonly ILog Log = LogManager.GetLogger(typeof(UrbanAirSharpGateway));
 
 		public UrbanAirSharpGateway(String appKey, String appMasterSecret)
 		{
-			_appKey = appKey;
-			_appMasterSecret = appMasterSecret;
-			_httpClient = new HttpClient();
-
 			XmlConfigurator.Configure();
-
-			var auth = String.Format("{0}:{1}", _appKey, _appMasterSecret);
-			auth = Convert.ToBase64String(Encoding.ASCII.GetBytes(auth));
-
-			_httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", auth);
-			_httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "application/vnd.urbanairship+json; version=3;");
+			ServiceModelConfig.Create(appKey, appMasterSecret);
 		}
 
 		/// <summary>
@@ -76,17 +63,11 @@ namespace UrbanAirSharp
 		/// <returns></returns>
 		public BaseResponse Push(String alert, IList<DeviceType> deviceTypes = null, String deviceId = null, IList<BaseAlert> deviceAlerts = null, Audience customAudience = null)
 		{
-			var request = new PushRequest()
-			{
-				Content = CreatePush(alert, deviceTypes, deviceId, deviceAlerts, customAudience)
-			};
+			var request = new PushRequest(CreatePush(alert, deviceTypes, deviceId, deviceAlerts, customAudience));
+			
+			var response = request.ExecuteAsync();
 
-			var httpResponseMessage = SendRequest(request);
-
-			return new BaseResponse()
-			{
-				HttpResponseCode = httpResponseMessage.Result.StatusCode
-			};
+			return response.Result;
 		}
 
 		/// <summary>
@@ -101,44 +82,38 @@ namespace UrbanAirSharp
 		public BaseResponse Validate(String alert, IList<DeviceType> deviceTypes = null, String deviceId = null,
 			IList<BaseAlert> deviceAlerts = null, Audience customAudience = null)
 		{
-			var request = new PushValidateRequest()
-			{
-				Content = CreatePush(alert, deviceTypes, deviceId, deviceAlerts, customAudience)
-			};
+			var request = new PushValidateRequest(CreatePush(alert, deviceTypes, deviceId, deviceAlerts, customAudience));
 
-			var httpResponseMessage = SendRequest(request);
+			var response = request.ExecuteAsync();
 
-			return new BaseResponse()
-			{
-				HttpResponseCode = httpResponseMessage.Result.StatusCode
-			};
+			return response.Result;
 		}
 
-		public BaseResponse AddSchedule(String alert, DateTime triggerDate)
+		public BaseResponse ScheduleAdd(String alert, DateTime triggerDate)
 		{
 			//TODO:
 			return null;
 		}
 
-		public BaseResponse EditSchedule(Guid scheduleId, String alert, DateTime triggerDate)
+		public BaseResponse ScheduleEdit(Guid scheduleId, String alert, DateTime triggerDate)
 		{
 			//TODO:
 			return null;
 		}
 
-		public BaseResponse DeleteSchedule(Guid scheduleId)
+		public BaseResponse ScheduleDelete(Guid scheduleId)
 		{
 			//TODO:
 			return null;
 		}
 
-		public BaseResponse GetSchedule(Guid scheduleId)
+		public BaseResponse ScheduleGet(Guid scheduleId)
 		{
 			//TODO:
 			return null;
 		}
 
-		public BaseResponse ListSchedules()
+		public BaseResponse SchedulesList()
 		{
 			//TODO:
 			return null;
@@ -209,24 +184,5 @@ namespace UrbanAirSharp
 			return push;
 		}
 
-		private Task<HttpResponseMessage> SendRequest(BaseRequest request)
-		{
-			var settings = new JsonSerializerSettings();
-			settings.Converters.Add(new StringEnumConverter { CamelCaseText = true });
-			settings.NullValueHandling = NullValueHandling.Ignore;
-
-			var json = JsonConvert.SerializeObject(request.GetContent(), settings);
-			var url = UrbanAirShipBaseUrl + request.RequestUrl;
-
-			Log.Debug(url);
-			Log.Debug(json);
-
-			var httpResponseMessage = _httpClient.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
-
-			Log.Debug("");
-			Log.Debug(httpResponseMessage.Result);
-
-			return httpResponseMessage;
-		}
 	}
 }

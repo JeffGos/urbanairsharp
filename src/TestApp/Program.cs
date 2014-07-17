@@ -9,14 +9,14 @@ namespace TestApp
 {
 	class Program
 	{
-		private const String AppKey = "YOUR_UA_APP_KEY";
-		private const String AppMasterSecret = "YOUR_UA_MASTER_SECRET";
+		private const String AppKey = "WruqqOeaTlSKSRCUJrzA0g";
+		private const String AppMasterSecret = "GcXgFOl5QSKgMfeYZWPb_w";
 
 		static void Main(String[] args)
 		{
 			var client = new UrbanAirSharpGateway(AppKey, AppMasterSecret);
 
-			client.Validate("Validate push", new List<DeviceType>() { DeviceType.Android }, "946fdc3d-0284-468f-a2f7-d007ed694907"); 
+			client.Validate("Validate push", new List<DeviceType>() { DeviceType.Android }, "946fdc3d-0284-468f-a2f7-d007ed694907");
 
 			client.Push("Broadcast Alert");
 

@@ -1,5 +1,8 @@
 ﻿// Copyright (c) 2014-2015 Jeff Gosling (jeffery.gosling@gmail.com)
+
+using System;
 using System.Net.Http;
+using UrbanAirSharp.Dto;
 
 namespace UrbanAirSharp.Request
 {
@@ -11,10 +14,10 @@ namespace UrbanAirSharp.Request
 	/// </summary>
 	public class PushValidateRequest : PushRequest
 	{
-		public PushValidateRequest()
+		public PushValidateRequest(Push push)
+			: base(push)
 		{
 			RequestUrl = "api/push/validate/";
-			RequestMethod = HttpMethod.Post;
 		}
 	}
 }
