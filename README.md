@@ -50,7 +50,7 @@ This is an example of a more complicated, audience targeted Push
 
 	client.Push("English speaking New Zealand Rugby fans", null, null, null, customAudience);
 
-# Licence
+# License
 Copyright (c) 2014-2015 Jeff Gosling Licensed under the MIT license.
 
 http://opensource.org/licenses/mit-license.php
