@@ -7,6 +7,20 @@ using UrbanAirSharp.Type;
 
 namespace UrbanAirSharp.Dto
 {
+	/// <summary>
+	/// Used to form a PUSH request
+	/// Send a push notification to a specified device or list of devices
+	/// 
+	/// audience - Required
+	/// notification - Required
+	/// device_types - Required
+	/// 
+	/// options - optionally specify an expiry date
+	/// actions - TODO not supported yet 
+	/// message - RICH PUSH message - TODO not supported yet
+	/// 
+	/// http://docs.urbanairship.com/reference/api/v3/push.html
+	/// </summary>
 	public class Push
 	{
 		[JsonProperty("notification")]
