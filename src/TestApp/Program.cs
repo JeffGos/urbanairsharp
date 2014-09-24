@@ -51,7 +51,7 @@ namespace TestApp
 
 
             var result = client.RegisterDeviceToken("");
-            Console.WriteLine("Register Device Response: Ok?: {0}   Message: {1}    ErrorCode: {2}  ErrorMessage: {3}", result.Ok, result.Message, result.ErrorCode, result.Error);
+            Console.WriteLine("Register Device Response: Ok?: {0}   Message: {1}  ErrorCode: {2}  ErrorMessage: {3}", result.Ok, result.Message, result.ErrorCode, result.Error);
 
             Console.ReadLine();
         }

@@ -27,10 +27,10 @@ namespace UrbanAirSharp
     /// ---------
     /// api/push
     /// api/push/validate
-    /// api/schedule 
     /// 
     /// Not Supported Yet:
     /// -----------------
+	/// api/schedule 
     /// api/tags 
     /// api/feeds 
     /// api/reports 
@@ -89,6 +89,7 @@ namespace UrbanAirSharp
             return response.Result;
         }
 
+		/*
         public BaseResponse ScheduleAdd(String alert, DateTime triggerDate)
         {
             //TODO:
@@ -118,6 +119,7 @@ namespace UrbanAirSharp
             //TODO:
             return null;
         }
+		*/
 
         private static Push CreatePush(String alert, IList<DeviceType> deviceTypes = null, String deviceId = null, IList<BaseAlert> deviceAlerts = null, Audience customAudience = null)
         {

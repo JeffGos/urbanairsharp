@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("UrbanAirSharp")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("C# .Net library to simplify server-side calls to the Urban Airship API Version 3")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("thisisglobal")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("UrbanAirSharp")]
-[assembly: AssemblyCopyright("Copyright © thisisglobal 2014")]
+[assembly: AssemblyCopyright("Copyright © Jeff Gosling (jeffery.gosling@gmail.com) 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
