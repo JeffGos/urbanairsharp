@@ -9,8 +9,8 @@ namespace TestApp
 {
     class Program
     {
-        private const String AppKey = "WruqqOeaTlSKSRCUJrzA0g";
-        private const String AppMasterSecret = "GcXgFOl5QSKgMfeYZWPb_w";
+        private const String AppKey = "YOUR_APP_SECRET";
+        private const String AppMasterSecret = "YOUR_APP_MASTER_SECRET";
 
 
         static void Main(String[] args)
@@ -48,7 +48,6 @@ namespace TestApp
             var customAudience = new Audience().AndAudience(new List<Audience>() { fansAudience, newZealandAudience, englishAudience });
 
             client.Push("English speaking New Zealand Rugby fans", null, null, null, customAudience);
-
 
             var result = client.RegisterDeviceToken("");
             Console.WriteLine("Register Device Response: Ok?: {0}   Message: {1}  ErrorCode: {2}  ErrorMessage: {3}", result.Ok, result.Message, result.ErrorCode, result.Error);
