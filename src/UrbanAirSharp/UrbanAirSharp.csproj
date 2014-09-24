@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dto\BaseAlert.cs" />
+    <Compile Include="Dto\DeviceToken.cs" />
     <Compile Include="Dto\OpenAction.cs" />
     <Compile Include="Dto\AndroidAlert.cs" />
     <Compile Include="Dto\Audience.cs" />
@@ -67,6 +68,8 @@
     <Compile Include="Request\Base\DeleteRequest.cs" />
     <Compile Include="Request\Base\GetRequest.cs" />
     <Compile Include="Request\Base\PostRequest.cs" />
+    <Compile Include="Request\Base\PutRequest.cs" />
+    <Compile Include="Request\DeviceTokenRequest.cs" />
     <Compile Include="Request\ScheduleDeleteRequest.cs" />
     <Compile Include="Request\ScheduleGetRequest.cs" />
     <Compile Include="Request\ScheduleListRequest.cs" />
