@@ -185,12 +185,34 @@ namespace UrbanAirSharp
         }
 
 
+        /// <summary>
+        /// Registers a device token only with the Urban Airship site, this can be used for new device tokens and for existing tokens.
+        /// The exitsing settings (badge, tags, alias, quiet times) will be overriden. If a token has become inactive reregistering it
+        /// will make it active again.
+        /// </summary>
+        /// <returns>Response from Urban Airship</returns>
         public BaseResponse RegisterDeviceToken(string deviceToken)
         {
             if (string.IsNullOrEmpty(deviceToken))
                 throw new ArgumentException("A device Token is Required", "deviceToken");
 
             var deviceRequest = new DeviceTokenRequest(new DeviceToken() {Token = deviceToken});
+            var requestTask = deviceRequest.ExecuteAsync();
+
+            return requestTask.Result;
+        }
+
+        /// <summary>
+        /// Registers a device token with extended properties with the Urban Airship site, this can be used for new device 
+        /// tokens and for existing tokens. If a token has become inactive reregistering it will make it active again. 
+        /// </summary>
+        /// <returns>Response from Urban Airship</returns>
+        public BaseResponse RegisterDeviceToken(DeviceToken deviceToken)
+        {
+            if (string.IsNullOrEmpty(deviceToken.Token))
+                throw new ArgumentException("A device Tokens Token field is Required", "deviceToken");
+
+            var deviceRequest = new DeviceTokenRequest(deviceToken);
             var requestTask = deviceRequest.ExecuteAsync();
 
             return requestTask.Result;
