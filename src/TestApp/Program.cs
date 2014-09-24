@@ -9,8 +9,8 @@ namespace TestApp
 {
     class Program
     {
-        private const String AppKey = "WruqqOeaTlSKSRCUJrzA0g";
-        private const String AppMasterSecret = "GcXgFOl5QSKgMfeYZWPb_w";
+        private const String AppKey = "YOUR_APP_SECRET";
+        private const String AppMasterSecret = "YOUR_APP_MASTER_SECRET";
 
 
         static void Main(String[] args)
