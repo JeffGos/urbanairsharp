@@ -1,7 +1,7 @@
 UrbanAirSharp
 =============
 
-UrbanAirSharp is C# .Net library to simplify server-side calls to the Urban Airship API Version 3.
+UrbanAirSharp is a C# .Net library to simplify server-side calls to the Urban Airship API Version 3.
 http://docs.urbanairship.com/reference/api/v3/
 
 Urban Airship unifies and simplifies the sending of push notifications to mobile devices.
