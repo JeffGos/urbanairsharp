@@ -14,13 +14,13 @@ namespace UrbanAirSharp.Dto
 		/// <summary>
 		/// Scheduled push to be delivered globally at the same moment
 		/// </summary>
-		[JsonProperty("schedule_time")]
-		public DateTime ScheduleTime { get; set; }
+		[JsonProperty("scheduled_time")]
+		public DateTime? ScheduleTime { get; set; }
 
 		/// <summary>
 		/// Scheduled push to be delivered at the device local time
 		/// </summary>
 		[JsonProperty("local_scheduled_time")]
-		public DateTime LocalScheduleTime { get; set; }
+		public DateTime? LocalScheduleTime { get; set; }
 	}
 }

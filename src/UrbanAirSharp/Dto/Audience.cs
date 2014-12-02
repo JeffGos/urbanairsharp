@@ -1,6 +1,5 @@
 ﻿// Copyright (c) 2014-2015 Jeff Gosling (jeffery.gosling@gmail.com)
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;

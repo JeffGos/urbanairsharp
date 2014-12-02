@@ -81,6 +81,10 @@
     <Compile Include="Request\ScheduleEditRequest.cs" />
     <Compile Include="Request\ScheduleCreateRequest.cs" />
     <Compile Include="Response\PushResponse.cs" />
+    <Compile Include="Response\ScheduleEditResponse.cs" />
+    <Compile Include="Response\ScheduleGetResponse.cs" />
+    <Compile Include="Response\ScheduleListResponse.cs" />
+    <Compile Include="Response\ScheduleCreateResponse.cs" />
     <Compile Include="Response\TagListResponse.cs" />
     <Compile Include="ServiceModelConfig.cs" />
     <Compile Include="Type\DeviceType.cs" />

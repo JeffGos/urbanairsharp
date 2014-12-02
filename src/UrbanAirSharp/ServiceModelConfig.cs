@@ -23,6 +23,10 @@ namespace UrbanAirSharp
 
 			SerializerSettings.Converters.Add(new StringEnumConverter { CamelCaseText = true });
 			SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+			SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+			SerializerSettings.DateParseHandling = DateParseHandling.DateTime;
+			SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
+			SerializerSettings.DateFormatString = "yyyy-MM-ddTH:mm:ss";
 
 			HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", auth);
 			HttpClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "application/vnd.urbanairship+json; version=3;");

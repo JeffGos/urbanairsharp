@@ -63,24 +63,7 @@ namespace UrbanAirSharp
 		/// <returns></returns>
 		public PushResponse Push(String alert, IList<DeviceType> deviceTypes = null, String deviceId = null, IList<BaseAlert> deviceAlerts = null, Audience customAudience = null)
 		{
-			try
-			{
-				var request = new PushRequest(CreatePush(alert, deviceTypes, deviceId, deviceAlerts, customAudience));
-
-				var response = request.ExecuteAsync();
-
-				return response.Result;
-			}
-			catch (Exception e)
-			{
-				Log.Error("UrbanAirSharpGateway.Push", e);
-
-				return new PushResponse()
-				{
-					Error = e.InnerException != null ? e.InnerException.Message : e.Message,
-					Ok = false
-				};
-			}
+			return SendRequest(new PushRequest(CreatePush(alert, deviceTypes, deviceId, deviceAlerts, customAudience)));
 		}
 
 		/// <summary>
@@ -95,58 +78,33 @@ namespace UrbanAirSharp
 		public PushResponse Validate(String alert, IList<DeviceType> deviceTypes = null, String deviceId = null,
 			IList<BaseAlert> deviceAlerts = null, Audience customAudience = null)
 		{
-			try
-			{
-
-				var request = new PushValidateRequest(CreatePush(alert, deviceTypes, deviceId, deviceAlerts, customAudience));
-
-				var response = request.ExecuteAsync();
-
-				return response.Result;
-			}
-			catch (Exception e)
-			{
-				Log.Error("UrbanAirSharpGateway.Validate", e);
-
-				return new PushResponse()
-				{
-					Error = e.InnerException != null ? e.InnerException.Message : e.Message,
-					Ok = false
-				};
-			}
+			return SendRequest(new PushValidateRequest(CreatePush(alert, deviceTypes, deviceId, deviceAlerts, customAudience)));
 		}
 
-		/*
-        public BaseResponse ScheduleAdd(String alert, DateTime triggerDate)
+		public ScheduleCreateResponse CreateSchedule(Schedule schedule)
         {
-            //TODO:
-            return null;
+			return SendRequest(new ScheduleCreateRequest(schedule));
         }
 
-        public BaseResponse ScheduleEdit(Guid scheduleId, String alert, DateTime triggerDate)
+		public ScheduleEditResponse EditSchedule(Guid scheduleId, Schedule schedule)
         {
-            //TODO:
-            return null;
+			return SendRequest(new ScheduleEditRequest(scheduleId, schedule));
         }
 
-        public BaseResponse ScheduleDelete(Guid scheduleId)
+		public BaseResponse DeleteSchedule(Guid scheduleId)
         {
-            //TODO:
-            return null;
+			return SendRequest(new ScheduleDeleteRequest(scheduleId));
         }
 
-        public BaseResponse ScheduleGet(Guid scheduleId)
+        public ScheduleGetResponse GetSchedule(Guid scheduleId)
         {
-            //TODO:
-            return null;
+			return SendRequest(new ScheduleGetRequest(scheduleId));
         }
 
-        public BaseResponse SchedulesList()
+        public ScheduleListResponse ListSchedules()
         {
-            //TODO:
-            return null;
+			return SendRequest(new ScheduleListRequest());
         }
-		*/
 
 		/// <summary>
 		/// Registers a device token only with the Urban Airship site, this can be used for new device tokens and for existing tokens.
@@ -156,26 +114,7 @@ namespace UrbanAirSharp
 		/// <returns>Response from Urban Airship</returns>
 		public BaseResponse RegisterDeviceToken(string deviceToken)
 		{
-			if (string.IsNullOrEmpty(deviceToken))
-				throw new ArgumentException("A device Token is Required", "deviceToken");
-
-			try
-			{
-				var deviceRequest = new DeviceTokenRequest(new DeviceToken() { Token = deviceToken });
-				var requestTask = deviceRequest.ExecuteAsync();
-
-				return requestTask.Result;
-			}
-			catch (Exception e)
-			{
-				Log.Error("UrbanAirSharpGateway.RegisterDeviceToken", e);
-
-				return new BaseResponse()
-				{
-					Error = e.InnerException != null ? e.InnerException.Message : e.Message,
-					Ok = false
-				};
-			}
+			return RegisterDeviceToken(new DeviceToken() {Token = deviceToken});
 		}
 
 		/// <summary>
@@ -188,23 +127,7 @@ namespace UrbanAirSharp
 			if (string.IsNullOrEmpty(deviceToken.Token))
 				throw new ArgumentException("A device Tokens Token field is Required", "deviceToken");
 
-			try
-			{
-				var request = new DeviceTokenRequest(deviceToken);
-				var requestTask = request.ExecuteAsync();
-
-				return requestTask.Result;
-			}
-			catch (Exception e)
-			{
-				Log.Error("UrbanAirSharpGateway.RegisterDeviceToken", e);
-
-				return new BaseResponse()
-				{
-					Error = e.InnerException != null ? e.InnerException.Message : e.Message,
-					Ok = false
-				};
-			}
+			return SendRequest(new DeviceTokenRequest(deviceToken));
 		}
 
 		public BaseResponse CreateTag(Tag tag)
@@ -212,23 +135,7 @@ namespace UrbanAirSharp
 			if (string.IsNullOrEmpty(tag.TagName))
 				throw new ArgumentException("A tag name is Required", "tag.TagName");
 
-			try
-			{
-				var request = new TagCreateRequest(tag);
-				var requestTask = request.ExecuteAsync();
-
-				return requestTask.Result;
-			}
-			catch (Exception e)
-			{
-				Log.Error("UrbanAirSharpGateway.CreateTag", e);
-
-				return new BaseResponse()
-				{
-					Error = e.InnerException != null ? e.InnerException.Message : e.Message,
-					Ok = false
-				};
-			}
+			return SendRequest(new TagCreateRequest(tag));
 		}
 
 		public BaseResponse DeleteTag(string tag)
@@ -236,50 +143,15 @@ namespace UrbanAirSharp
 			if (string.IsNullOrEmpty(tag))
 				throw new ArgumentException("A tag is Required", "tag");
 
-			try
-			{
-				var request = new TagDeleteRequest(tag);
-				var requestTask = request.ExecuteAsync();
-
-				return requestTask.Result;
-			}
-			catch (Exception e)
-			{
-				Log.Error("UrbanAirSharpGateway.DeleteTag", e);
-
-				return new BaseResponse()
-				{
-					Error = e.InnerException != null ? e.InnerException.Message : e.Message,
-					Ok = false
-				};
-			}
+			return SendRequest(new TagDeleteRequest(tag));
 		}
 
 		public TagListResponse ListTags()
 		{
-			try
-			{
-				var request = new TagListRequest();
-				var requestTask = request.ExecuteAsync();
-
-				return requestTask.Result;
-
-			}
-			catch (Exception e)
-			{
-				Log.Error("UrbanAirSharpGateway.ListTags", e);
-
-				return new TagListResponse()
-				{
-					Error = e.InnerException != null ? e.InnerException.Message : e.Message,
-					Ok = false
-				};
-			}
+			return SendRequest(new TagListRequest());
 		}
 
-		//=====================================================================================================================
-
-		private static Push CreatePush(String alert, IList<DeviceType> deviceTypes = null, String deviceId = null, IList<BaseAlert> deviceAlerts = null, Audience customAudience = null)
+		public static Push CreatePush(String alert, IList<DeviceType> deviceTypes = null, String deviceId = null, IList<BaseAlert> deviceAlerts = null, Audience customAudience = null)
 		{
 			var push = new Push()
 			{
@@ -342,6 +214,28 @@ namespace UrbanAirSharp
 			push.Notification.BlackberryAlert = (BlackberryAlert)deviceAlerts.FirstOrDefault(x => x is BlackberryAlert);
 
 			return push;
+		}
+
+		//=====================================================================================================================
+
+		private static TResponse SendRequest<TResponse>(BaseRequest<TResponse> request) where TResponse : BaseResponse, new()
+		{
+			try
+			{
+				var requestTask = request.ExecuteAsync();
+
+				return requestTask.Result;
+			}
+			catch (Exception e)
+			{
+				Log.Error(request.GetType().FullName, e);
+
+				return new TResponse()
+				{
+					Error = e.InnerException != null ? e.InnerException.Message : e.Message,
+					Ok = false
+				};
+			}
 		}
 	}
 }

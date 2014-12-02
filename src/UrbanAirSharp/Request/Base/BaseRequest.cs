@@ -77,6 +77,8 @@ namespace UrbanAirSharp.Request.Base
 				result.Ok = true;
 			}
 
+			result.OnDeserialised();
+
 			return result;
 		}
 	}

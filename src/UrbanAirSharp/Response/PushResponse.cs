@@ -2,16 +2,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Net;
 using Newtonsoft.Json;
 
 namespace UrbanAirSharp.Response
 {
 	public class PushResponse : BaseResponse
 	{
-		[JsonProperty("operation_id")]
-		public Guid OperationId { get; set; }
-
 		[JsonProperty("push_ids")]
 		public List<Guid> PushIds { get; set; }
 

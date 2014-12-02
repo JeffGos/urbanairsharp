@@ -1,7 +1,5 @@
 ﻿// Copyright (c) 2014-2015 Jeff Gosling (jeffery.gosling@gmail.com)
 
-using System;
-using System.Net.Http;
 using UrbanAirSharp.Dto;
 using UrbanAirSharp.Request.Base;
 using UrbanAirSharp.Response;

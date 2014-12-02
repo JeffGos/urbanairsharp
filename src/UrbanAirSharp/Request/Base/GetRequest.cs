@@ -1,9 +1,7 @@
 ﻿// Copyright (c) 2014-2015 Jeff Gosling (jeffery.gosling@gmail.com)
 
-using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using UrbanAirSharp.Response;
 
 namespace UrbanAirSharp.Request.Base
