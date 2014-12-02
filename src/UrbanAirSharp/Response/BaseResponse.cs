@@ -12,21 +12,6 @@ namespace UrbanAirSharp.Response
 		[JsonProperty("ok")]
 		public bool Ok { get; set; }
 
-		[JsonProperty("operation_id")]
-		public Guid OperationId { get; set; }
-
-		[JsonProperty("push_ids")]
-		public List<Guid> PushIds { get; set; }
-
-		[JsonProperty("message_ids")]
-		public List<Guid> MessageIds { get; set; }
-
-		[JsonProperty("url_ids")]
-		public List<Guid> UrlIds { get; set; }
-
-		[JsonProperty("content_urls")]
-		public List<String> ContentUrls { get; set; }
-
 		[JsonProperty("error")]
 		public String Error { get; set; }
 

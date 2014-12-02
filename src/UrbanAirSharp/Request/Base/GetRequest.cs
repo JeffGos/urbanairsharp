@@ -14,7 +14,7 @@ namespace UrbanAirSharp.Request.Base
 	/// 
 	/// http://docs.urbanairship.com/reference/api/v3/push.html
 	/// </summary>
-	public class GetRequest : BaseRequest
+	public class GetRequest<TResponse> : BaseRequest<TResponse> where TResponse : BaseResponse, new()
 	{
 		public GetRequest()
 			: base(ServiceModelConfig.Host, ServiceModelConfig.HttpClient, ServiceModelConfig.SerializerSettings)
@@ -22,7 +22,7 @@ namespace UrbanAirSharp.Request.Base
 			RequestMethod = HttpMethod.Get;
 		}
 
-		public override async Task<BaseResponse> ExecuteAsync()
+		public override async Task<TResponse> ExecuteAsync()
 		{
 			Log.Debug(RequestMethod + " - " + Host + RequestUrl);
 

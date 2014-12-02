@@ -15,22 +15,22 @@ namespace UrbanAirSharp.Request.Base
 	/// 
 	/// http://docs.urbanairship.com/reference/api/v3/push.html
 	/// </summary>
-	public class PostRequest <T> : BaseRequest
+	public class PostRequest<TResponse, TContent> : BaseRequest<TResponse> where TResponse : BaseResponse, new()
 	{
 		//TODO: PostRequest shouldn't declate this - should be more abstract
 		public readonly Encoding Encoding = Encoding.UTF8;
 		public const String MediaType = "application/json";
 
-		protected T Content;
+		protected TContent Content;
 		
-		public PostRequest(T content)
+		public PostRequest(TContent content)
 			: base(ServiceModelConfig.Host, ServiceModelConfig.HttpClient, ServiceModelConfig.SerializerSettings)
 		{
 			RequestMethod = HttpMethod.Post;
 			Content = content;
 		}
 
-		public override async Task<BaseResponse> ExecuteAsync()
+		public override async Task<TResponse> ExecuteAsync()
 		{
 			Log.Debug(RequestMethod + " - " + Host + RequestUrl);
 

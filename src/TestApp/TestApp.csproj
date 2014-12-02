@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UrbanAirSharp\UrbanAirSharp.csproj">
-      <Project>{21DE41E4-9100-4CD0-9E6D-07E459E7C80F}</Project>
+      <Project>{21de41e4-9100-4cd0-9e6d-07e459e7c80f}</Project>
       <Name>UrbanAirSharp</Name>
     </ProjectReference>
   </ItemGroup>

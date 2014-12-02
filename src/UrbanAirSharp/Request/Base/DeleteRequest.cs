@@ -8,7 +8,7 @@ using UrbanAirSharp.Response;
 
 namespace UrbanAirSharp.Request.Base
 {
-	public class DeleteRequest : BaseRequest
+	public class DeleteRequest<TResponse> : BaseRequest<TResponse> where TResponse : BaseResponse, new()
 	{
 		public DeleteRequest()
 			: base(ServiceModelConfig.Host, ServiceModelConfig.HttpClient, ServiceModelConfig.SerializerSettings)
@@ -16,7 +16,7 @@ namespace UrbanAirSharp.Request.Base
 			RequestMethod = HttpMethod.Delete;
 		}
 
-		public override async Task<BaseResponse> ExecuteAsync()
+		public override async Task<TResponse> ExecuteAsync()
 		{
 			Log.Debug(RequestMethod + " - " + Host + RequestUrl);
 

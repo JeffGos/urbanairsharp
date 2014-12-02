@@ -4,6 +4,7 @@ using System;
 using System.Net.Http;
 using UrbanAirSharp.Dto;
 using UrbanAirSharp.Request.Base;
+using UrbanAirSharp.Response;
 
 namespace UrbanAirSharp.Request
 {
@@ -11,7 +12,7 @@ namespace UrbanAirSharp.Request
 	/// Used to form a SCHEDULE request
 	/// http://docs.urbanairship.com/reference/api/v3/schedule.html#schedule-a-notification
 	/// </summary>
-	public class ScheduleCreateRequest : PostRequest<Schedule>
+	public class ScheduleCreateRequest : PostRequest<BaseResponse, Schedule>
 	{
 		public ScheduleCreateRequest(Schedule schedule)
 			: base(schedule)

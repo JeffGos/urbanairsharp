@@ -9,26 +9,27 @@ using UrbanAirSharp.Response;
 
 namespace UrbanAirSharp.Request.Base
 {
-    public class PutRequest<T> : BaseRequest
-    {
+	public class PutRequest<TResponse, TContent> : BaseRequest<TResponse> where TResponse : BaseResponse, new()
+	{
         public readonly Encoding Encoding = Encoding.UTF8;
         public const String MediaType = "application/json";
 
-        protected T Content;
+        protected TContent Content;
 
-
-        public PutRequest(T content) : base(ServiceModelConfig.Host, ServiceModelConfig.HttpClient, ServiceModelConfig.SerializerSettings)
+		public PutRequest(TContent content)
+			: base(ServiceModelConfig.Host, ServiceModelConfig.HttpClient, ServiceModelConfig.SerializerSettings)
         {
+			RequestMethod = HttpMethod.Put;
             Content = content;
         }
 
-        public override async Task<BaseResponse> ExecuteAsync()
+		public override async Task<TResponse> ExecuteAsync()
         {
             Log.Debug(RequestMethod + " - " + Host + RequestUrl);
 
             var json = JsonConvert.SerializeObject(Content, SerializerSettings);
 
-            Log.Debug("Payload - " + json);
+            Log.Info("Payload - " + json);
 
             var response = await HttpClient.PutAsync(Host + RequestUrl, new StringContent(json, Encoding, MediaType));
 

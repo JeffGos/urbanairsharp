@@ -9,15 +9,15 @@ using UrbanAirSharp.Response;
 namespace UrbanAirSharp.Request
 {
 	/// <summary>
-	/// Used to form a PUSH request
-	/// http://docs.urbanairship.com/reference/api/v3/push.html
+	/// Used to form a TAG create request
+	/// http://docs.urbanairship.com/api/ua.html#put--api-tags-(tag)
 	/// </summary>
-	public class PushRequest : PostRequest<PushResponse, Push>
+	public class TagCreateRequest : PutRequest<BaseResponse, Tag>
 	{
-		public PushRequest(Push push)
-			: base(push)
+		public TagCreateRequest(Tag tag)
+			: base(tag)
 		{
-			RequestUrl = "api/push/";
+			RequestUrl = "api/tags/" + tag.TagName + "/";
 		}
 	}
 }

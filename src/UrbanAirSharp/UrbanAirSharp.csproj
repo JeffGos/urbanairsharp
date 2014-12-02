@@ -35,7 +35,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Dto\BaseAlert.cs" />
     <Compile Include="Dto\DeviceToken.cs" />
+    <Compile Include="Dto\AddRemoveList.cs" />
     <Compile Include="Dto\OpenAction.cs" />
     <Compile Include="Dto\AndroidAlert.cs" />
     <Compile Include="Dto\Audience.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Dto\Options.cs" />
     <Compile Include="Dto\ScheduleInfo.cs" />
     <Compile Include="Dto\Schedule.cs" />
+    <Compile Include="Dto\Tag.cs" />
     <Compile Include="Dto\WindowsAlert.cs" />
     <Compile Include="Dto\WindowsPhoneAlert.cs" />
     <Compile Include="Request\Base\DeleteRequest.cs" />
@@ -70,11 +72,16 @@
     <Compile Include="Request\Base\PostRequest.cs" />
     <Compile Include="Request\Base\PutRequest.cs" />
     <Compile Include="Request\DeviceTokenRequest.cs" />
+    <Compile Include="Request\TagDeleteRequest.cs" />
+    <Compile Include="Request\TagCreateRequest.cs" />
+    <Compile Include="Request\TagListRequest.cs" />
     <Compile Include="Request\ScheduleDeleteRequest.cs" />
     <Compile Include="Request\ScheduleGetRequest.cs" />
     <Compile Include="Request\ScheduleListRequest.cs" />
     <Compile Include="Request\ScheduleEditRequest.cs" />
     <Compile Include="Request\ScheduleCreateRequest.cs" />
+    <Compile Include="Response\PushResponse.cs" />
+    <Compile Include="Response\TagListResponse.cs" />
     <Compile Include="ServiceModelConfig.cs" />
     <Compile Include="Type\DeviceType.cs" />
     <Compile Include="Type\AudienceType.cs" />
