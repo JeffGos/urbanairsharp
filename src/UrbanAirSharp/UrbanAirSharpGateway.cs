@@ -108,7 +108,7 @@ namespace UrbanAirSharp
 
 		/// <summary>
 		/// Registers a device token only with the Urban Airship site, this can be used for new device tokens and for existing tokens.
-		/// The exitsing settings (badge, tags, alias, quiet times) will be overriden. If a token has become inactive reregistering it
+		/// The existing settings (badge, tags, alias, quiet times) will be overriden. If a token has become inactive reregistering it
 		/// will make it active again.
 		/// </summary>
 		/// <returns>Response from Urban Airship</returns>

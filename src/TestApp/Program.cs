@@ -11,7 +11,9 @@ namespace TestApp
     {
 		private const String AppKey = "YOUR_URBAN_AIRSHIP_APP_KEY";
 		private const String AppMasterSecret = "YOUR_URBAN_AIRSHIP_APP_MASTER_SECRET";
-	    private const String TestDeviceToken = "YOUR_TEST_DEVICE_DEVICE_TOKEN";
+	    
+		private const String TestDeviceToken = "YOUR_TEST_DEVICE_DEVICE_TOKEN";
+		private const String TestDeviceGuid = "YOUR_TEST_DEVICE_DEVICE_GUID"; //Example: "946fdc3d-0284-468f-a2f7-d007ed694908"
 
 	    private static UrbanAirSharpGateway _urbanAirSharpGateway;
 
@@ -33,7 +35,7 @@ namespace TestApp
 			Console.WriteLine("================ TESTING VALIDATE ================");
 			Console.WriteLine();
 
-			var response = _urbanAirSharpGateway.Validate("Validate push", new List<DeviceType> { DeviceType.Android }, "946fdc3d-0284-468f-a2f7-d007ed694907");
+			var response = _urbanAirSharpGateway.Validate("Validate push", new List<DeviceType> { DeviceType.Android }, TestDeviceGuid);
 
 			Console.Write(response.HttpResponseCode + " - ");
 			Console.WriteLine(response.Ok ? "SUCCESS" : "FAILED");
@@ -58,7 +60,7 @@ namespace TestApp
 			Console.WriteLine();
 
 			Console.WriteLine("PUSH Targeted Alert to device");
-			response = _urbanAirSharpGateway.Push("Targeted Alert to device", new List<DeviceType> { DeviceType.Android }, "946fdc3d-0284-468f-a2f7-d007ed694907");
+			response = _urbanAirSharpGateway.Push("Targeted Alert to device", new List<DeviceType> { DeviceType.Android }, TestDeviceGuid);
 			Console.Write(response.HttpResponseCode + " - ");
 			Console.WriteLine(response.Ok ? "SUCCESS" : "FAILED");
 			Console.WriteLine();
