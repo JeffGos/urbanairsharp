@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/JeffGos/urbanairsharp</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>1.0.0 Initial Release with basic support for push notifications</releaseNotes>
+    <releaseNotes>1.2.0.0 Support for Push, Validate, Schedules, DeviceTokens and Tags</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>UrbanAirShip UrbanAirSharp Urban Airship Push Notification</tags>
   </metadata>
