@@ -11,18 +11,18 @@ http://urbanairship.com/
 
 The following API functionality is currently supported
 
-Push
-Validate
-Schedule
-Device Tokens
-Tags
+- Push
+- Validate
+- Schedule
+- Device Tokens
+- Tags
 
 Support for the following still needs to be added
 
-Feeds
-Reports
-Segments
-Location
+- Feeds
+- Reports
+- Segments
+- Location
 
 # Getting Started
 
