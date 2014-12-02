@@ -27,14 +27,14 @@ namespace UrbanAirSharp
 	/// ---------
 	/// api/push
 	/// api/push/validate
+	/// api/schedule 
+	/// api/device_tokens 
+	/// api/tags 
 	/// 
 	/// Not Supported Yet:
 	/// -----------------
-	/// api/schedule 
-	/// api/tags 
 	/// api/feeds 
 	/// api/reports 
-	/// api/device_tokens 
 	/// api/segments 
 	/// api/location 
 	/// </summary>

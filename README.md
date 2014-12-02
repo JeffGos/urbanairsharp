@@ -7,6 +7,23 @@ http://docs.urbanairship.com/reference/api/v3/
 Urban Airship unifies and simplifies the sending of push notifications to mobile devices.
 http://urbanairship.com/
 
+# API Support
+
+The following API functionality is currently supported
+
+Push
+Validate
+Schedule
+Device Tokens
+Tags
+
+Support for the following still needs to be added
+
+Feeds
+Reports
+Segments
+Location
+
 # Getting Started
 
 The source includes a test project which has examples on the supported functionality of the library
